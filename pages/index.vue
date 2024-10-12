@@ -1,13 +1,14 @@
 <template>
-    <div>
-        
-    </div>
+  <div>
+    <p>
+      data:
+      {{ data }}
+    </p>
+  </div>
 </template>
-<script>
-export default {
-    
-}
+
+<script setup lang="ts">
+const { data } = await useFetch("/api/player");
 </script>
-<style lang="">
-    
-</style>
+
+<style lang=""></style>

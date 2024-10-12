@@ -7,9 +7,11 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "dev:host": "nuxt dev --hostname '0' --port 8000"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "nuxt": "^3.12.3",
     "vue": "latest"
   }
