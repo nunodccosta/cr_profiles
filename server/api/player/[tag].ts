@@ -1,12 +1,14 @@
 export default defineEventHandler((event) => {
+  const tag = getRouterParam(event, "tag");
+
   const apiKey =
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImM5MTg3ZGIzLTg5OGYtNDJkYi1iNzJiLTg3ZDk4YWMxNzJhOSIsImlhdCI6MTcyMTQ4MTg2MSwic3ViIjoiZGV2ZWxvcGVyLzAzZjQ2NDgwLTZiMzctNTY4Yy00NThmLWU1OGVhMmRiN2RmNCIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI4OS4xNTMuNjguOTEiXSwidHlwZSI6ImNsaWVudCJ9XX0.thrRZhViq3F_y8TGncyO-YwcgmIw7akEJRwyAhFJ5DHARPdC57Jk0gyfadK3Q6aFfl4o45i8B7EVo-pF17ZzpQ";
   let player;
 
-  async function fetchPlayer(playerId: string) {
+  async function fetchPlayer() {
     try {
       const response = await fetch(
-        `https://api.clashroyale.com/v1/players/%23${playerId}`,
+        `https://api.clashroyale.com/v1/players/${tag}`,
         {
           method: "GET",
           headers: {
@@ -23,8 +25,8 @@ export default defineEventHandler((event) => {
     }
   }
 
-  player = fetchPlayer("20YGY2LYJ");
-  console.log(player);
+  player = fetchPlayer();
+
   if (player) return player;
-  else return "nothing";
+  else return "Something went terribly wrong :(";
 });
